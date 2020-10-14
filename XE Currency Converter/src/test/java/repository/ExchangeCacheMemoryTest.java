@@ -26,6 +26,8 @@ public class ExchangeCacheMemoryTest {
 
         cacheMemory.putValue(exchangePair, "1");
 
+
+
         // Given: memory duration is 1 sec
         cacheMemory.setDurationOfValidityInSeconds(1);
 

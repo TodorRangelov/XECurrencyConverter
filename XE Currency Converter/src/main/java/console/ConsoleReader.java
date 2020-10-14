@@ -1,71 +1,28 @@
 package console;
 
-import helper.CheckConsoleInput;
+import domain.io.Logger;
+import helper.checkInput.CheckInput;
 
 import java.util.Scanner;
 
-import static helper.InfoToInputDataHelper.*;
-
 public class ConsoleReader {
 
-    private String line;
+    public String readCommandAndCheck(Scanner scanner,
+                                      Logger logger,
+                                      String userMessages,
+                                      CheckInput checkInput) {
 
-    public String readCommandAndCheck(Scanner scanner, ConsoleLogger consoleLogger) {
         while (true) {
+            logger.logLine(userMessages);
+            String line = scanner.nextLine().toUpperCase();
 
-            consoleLogger.logLine(selectCommand());
-            this.line = scanner.nextLine().toUpperCase();
+            if (checkInput.check(line)) {
+                logger.logLine("Incorrect command! Try again.");
 
-            if (CheckConsoleInput.incorrectCommands(this.line)) {
-
-                consoleLogger.logLine("Incorrect command! Try again.");
                 continue;
             }
 
-            return this.line;
-        }
-    }
-
-    public String readValueAndCheck(Scanner scanner, ConsoleLogger consoleLogger) {
-        while (true) {
-
-            consoleLogger.logLine(value());
-            this.line = scanner.nextLine();
-
-            if (CheckConsoleInput.incorrectValue(this.line)) {
-
-                consoleLogger.logLine("Incorrect Value! Try again.");
-                continue;
-            }
-
-            return this.line;
-        }
-    }
-
-    public String readCurrencyAndCheck(Scanner scanner, ConsoleLogger consoleLogger) {
-        while (true) {
-
-            consoleLogger.logLine(selectCurrencyConvert());
-            this.line = scanner.nextLine().toUpperCase();
-
-            if (CheckConsoleInput.incorrectCurrency(this.line)) {
-                consoleLogger.logLine("Incorrect currency! Try again.");
-                continue;
-            }
-            return this.line;
-        }
-    }
-
-    public String readCurrencyToAndCheck(Scanner scanner, ConsoleLogger consoleLogger) {
-        while (true) {
-            consoleLogger.logLine(selectToCurrency());
-            this.line = scanner.nextLine().toUpperCase();
-
-            if (CheckConsoleInput.incorrectCurrency(this.line)) {
-                consoleLogger.logLine("Incorrect currency! Try again.");
-                continue;
-            }
-            return this.line;
+            return line;
         }
     }
 

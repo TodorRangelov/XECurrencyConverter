@@ -30,11 +30,6 @@ public class ExchangeMoney implements ExchangeService {
 
         exchangePair.setRate(rate);
 
-//        if (rate.matches(".*\\d.*")) {
-//
-//            logger.logLine(String.format("Currency rate: %s", rate));
-//        }
-
         BigDecimal rateBigDecimal = new BigDecimal(rate);
 
         BigDecimal exchangedValue = exchangePair.getFromMoney().getValue().multiply(rateBigDecimal);

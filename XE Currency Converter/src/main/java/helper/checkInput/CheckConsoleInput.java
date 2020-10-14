@@ -1,13 +1,15 @@
-package helper;
+package helper.checkInput;
 
 import enumeration.EnumCommands;
 
 public class CheckConsoleInput {
 
-    public static boolean incorrectCommands(String command) {
+    private String input;
+
+    public boolean incorrectCommands() {
 
         try {
-            EnumCommands enumCommands = EnumCommands.valueOf(command);
+            EnumCommands enumCommands = EnumCommands.valueOf(input);
 
         } catch (IllegalArgumentException e) {
             return true;
@@ -30,4 +32,5 @@ public class CheckConsoleInput {
 
         return true;
     }
+
 }
