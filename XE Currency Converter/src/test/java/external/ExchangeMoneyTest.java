@@ -26,8 +26,9 @@ public class ExchangeMoneyTest {
         Mockito.when(mockitoCurrConvAPI.fetchExchangeRateFor(exchangePair)).thenReturn("2");
 
         ExchangeMoney exchangeMoney = new ExchangeMoney();
+        ExchangeCacheMemory cacheMemory = new ExchangeCacheMemory();
 
-        Money exchange = exchangeMoney.exchange(exchangePair, mockitoCurrConvAPI, logger);
+        Money exchange = exchangeMoney.exchange(exchangePair, mockitoCurrConvAPI, logger, cacheMemory);
 
 
         Assert.assertEquals(new BigDecimal("3.0"), exchange.getValue());
@@ -46,8 +47,9 @@ public class ExchangeMoneyTest {
         Mockito.when(mockitoCurrConvAPI.fetchExchangeRateFor(exchangePair)).thenReturn("3");
 
         ExchangeMoney exchangeMoney = new ExchangeMoney();
+        ExchangeCacheMemory cacheMemory = new ExchangeCacheMemory();
 
-        Money exchange = exchangeMoney.exchange(exchangePair, mockitoCurrConvAPI, logger);
+        Money exchange = exchangeMoney.exchange(exchangePair, mockitoCurrConvAPI, logger, cacheMemory);
 
 
         Assert.assertEquals(new BigDecimal("4.5"), exchange.getValue());

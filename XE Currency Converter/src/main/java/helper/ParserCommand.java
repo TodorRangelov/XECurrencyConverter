@@ -14,6 +14,7 @@ public class ParserCommand {
     public ParserCommand(List<String> args) {
 
         this.command = EnumCommands.valueOf(args.get(0).toUpperCase());
+
         if (this.command.equals(EnumCommands.END)) {
 
             return;

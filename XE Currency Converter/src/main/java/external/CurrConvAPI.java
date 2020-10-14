@@ -2,7 +2,6 @@ package external;
 
 import helper.ExchangePair;
 
-import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;

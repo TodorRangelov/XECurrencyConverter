@@ -1,7 +1,13 @@
 package console;
 
+import enumeration.EnumCommands;
+import external.CurrConvAPI;
+import external.ExchangeMoney;
+import helper.ExchangePair;
+import helper.ParserCommand;
 import helper.checkInput.*;
 import helper.UserMessagesHelper;
+import repository.ExchangeCacheMemory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +17,18 @@ public class ConsoleRunner {
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        ConsoleCommandExecutor commandExecutor = new ConsoleCommandExecutor();
         ConsoleLogger consoleLogger = new ConsoleLogger();
         ConsoleReader reader = new ConsoleReader();
         UserMessagesHelper messages = new UserMessagesHelper();
+        CurrConvAPI currConvAPI = new CurrConvAPI();
+        ExchangeMoney exchangeMoney = new ExchangeMoney();
+        ExchangeCacheMemory cacheMemory = new ExchangeCacheMemory();
+        ConsoleCommandExecutor commandExecutor = new ConsoleCommandExecutor(
+                currConvAPI,
+                consoleLogger,
+                exchangeMoney,
+                cacheMemory);
+        ExchangePair exchangePair = new ExchangePair();
 
         while (true) {
             List<String> args = new ArrayList<>();
@@ -26,7 +40,7 @@ public class ConsoleRunner {
                     new IncorrectCommands()));
 
             if (args.get(0).equals("END")) {
-                commandExecutor.execute(args);
+                commandExecutor.execute(EnumCommands.END, exchangePair);
             }
 
             args.add(reader.readCommandAndCheck(
@@ -47,8 +61,11 @@ public class ConsoleRunner {
                     messages.selectToCurrency(),
                     new IncorrectCurrency()));
 
+            ParserCommand parser = new ParserCommand(args);
+            exchangePair = parser.getExchangePair();
+
             try {
-                commandExecutor.execute(args);
+                commandExecutor.execute(parser.getCommand(), exchangePair);
             } catch (Exception e) {
                 consoleLogger.logLine("something went wrong during HTTP request to external API");
             }

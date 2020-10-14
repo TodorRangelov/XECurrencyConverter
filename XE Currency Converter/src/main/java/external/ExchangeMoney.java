@@ -10,12 +10,11 @@ import java.math.BigDecimal;
 
 public class ExchangeMoney implements ExchangeService {
 
-    ExchangeCacheMemory cacheMemory = new ExchangeCacheMemory();
-
     @Override
     public Money exchange(ExchangePair exchangePair,
                           CurrConvAPI currConv,
-                          Logger logger) {
+                          Logger logger,
+                          ExchangeCacheMemory cacheMemory) {
 
         String rate;
 

@@ -8,6 +8,9 @@ public class ExchangePair {
     private String toCurrency;
     private String rate;
 
+    public ExchangePair() {
+    }
+
     public ExchangePair(Money from, String toCurrency) {
         this.from = from;
         this.toCurrency = toCurrency;

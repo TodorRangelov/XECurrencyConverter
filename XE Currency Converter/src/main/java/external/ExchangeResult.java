@@ -3,6 +3,7 @@ package external;
 import java.math.BigDecimal;
 
 public class ExchangeResult {
+
     BigDecimal result;
     boolean success;
     String errorMessage;
