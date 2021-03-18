@@ -3,43 +3,39 @@ package console;
 import domain.commands.ConvertCommand;
 import domain.commands.EndCommand;
 import domain.io.Logger;
-import enumeration.EnumCommands;
 import external.CurrConvAPI;
 import external.ExchangeMoney;
 import helper.ExchangePair;
-import repository.ExchangeCacheMemory;
+import helper.ParserCommand;
+
+import java.util.List;
 
 public class ConsoleCommandExecutor {
 
-    private CurrConvAPI currConvExchangeService;
-    private Logger logger;
-    private ExchangeMoney exchangeMoney;
-    private ExchangeCacheMemory cacheMemory;
+    private CurrConvAPI currConvExchangeService = new CurrConvAPI();
+    private Logger logger = new ConsoleLogger();
+    private ExchangeMoney exchangeMoney = new ExchangeMoney();
 
-    public ConsoleCommandExecutor(CurrConvAPI currConvExchangeService,
-                                  Logger logger,
-                                  ExchangeMoney exchangeMoney,
-                                  ExchangeCacheMemory cacheMemory) {
-        this.currConvExchangeService = currConvExchangeService;
-        this.logger = logger;
-        this.exchangeMoney = exchangeMoney;
-        this.cacheMemory = cacheMemory;
-    }
+    public void execute(List<String> args) {
 
-    public void execute(EnumCommands command, ExchangePair exchangePair) {
+        ParserCommand parser = new ParserCommand(args);
+        ExchangePair exchangePair = parser.getExchangePair();
 
-        switch (command) {
+        switch (parser.getCommand()) {
+
             case END:
+
                 new EndCommand().execute();
                 break;
 
             case CONVERT:
+
                 new ConvertCommand(
                         exchangePair,
                         logger,
                         currConvExchangeService,
-                        exchangeMoney,
-                        cacheMemory).execute();
+                        // Such a param should be of type ExchangeService or ExchangeMoney?
+                        exchangeMoney).execute();
                 break;
         }
     }
