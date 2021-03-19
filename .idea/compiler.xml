@@ -10,7 +10,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="XE.Currency.Converter" target="13" />
+      <module name="XE.Currency.Converter" target="15" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="XE.Currency.Converter" options="-parameters" />
+    </option>
   </component>
 </project>

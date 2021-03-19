@@ -1,7 +1,8 @@
 package repository;
 
-import domain.entities.Money;
-import helper.ExchangePair;
+import com.domain.entities.Money;
+import com.console.helper.ExchangePair;
+import com.repository.ExchangeCacheMemory;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,13 +1,15 @@
 package external;
 
-import console.ConsoleLogger;
-import domain.entities.Money;
-import domain.io.Logger;
-import helper.ExchangePair;
+import com.console.ConsoleLogger;
+import com.domain.entities.Money;
+import com.domain.io.Logger;
+import com.external.CurrConvAPI;
+import com.external.ExchangeMoney;
+import com.console.helper.ExchangePair;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
-import repository.ExchangeCacheMemory;
+import com.repository.ExchangeCacheMemory;
 
 import java.math.BigDecimal;
 
