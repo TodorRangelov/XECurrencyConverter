@@ -4,12 +4,12 @@ import com.console.ConsoleLogger;
 import com.domain.entities.Money;
 import com.domain.io.Logger;
 import com.external.CurrConvAPI;
-import com.external.ExchangeMoney;
+import com.service.MoneyServiceImpl;
 import com.console.helper.ExchangePair;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
-import com.repository.ExchangeCacheMemory;
+import com.repository.ExchangeCacheMemoryImpl;
 
 import java.math.BigDecimal;
 
@@ -19,7 +19,7 @@ public class ExchangeMoneyTest {
     public void convertingBGNtoEURWithRate2x() {
 
         Logger logger = new ConsoleLogger();
-        ExchangeCacheMemory mockitoMemory = Mockito.mock(ExchangeCacheMemory.class);
+        ExchangeCacheMemoryImpl mockitoMemory = Mockito.mock(ExchangeCacheMemoryImpl.class);
 
         ExchangePair exchangePair = new ExchangePair(new Money(new BigDecimal("1.5"), "BGN"), "EUR");
         Mockito.when(mockitoMemory.isMemoryExpired(exchangePair)).thenReturn(true);
@@ -27,8 +27,8 @@ public class ExchangeMoneyTest {
         CurrConvAPI mockitoCurrConvAPI = Mockito.mock(CurrConvAPI.class);
         Mockito.when(mockitoCurrConvAPI.fetchExchangeRateFor(exchangePair)).thenReturn("2");
 
-        ExchangeMoney exchangeMoney = new ExchangeMoney();
-        ExchangeCacheMemory cacheMemory = new ExchangeCacheMemory();
+        MoneyServiceImpl exchangeMoney = new MoneyServiceImpl();
+        ExchangeCacheMemoryImpl cacheMemory = new ExchangeCacheMemoryImpl();
 
         Money exchange = exchangeMoney.exchange(exchangePair, mockitoCurrConvAPI, logger, cacheMemory);
 
@@ -40,7 +40,7 @@ public class ExchangeMoneyTest {
     public void convertingBGNtoEURWithRate3x() {
 
         Logger logger = new ConsoleLogger();
-        ExchangeCacheMemory mockitoMemory = Mockito.mock(ExchangeCacheMemory.class);
+        ExchangeCacheMemoryImpl mockitoMemory = Mockito.mock(ExchangeCacheMemoryImpl.class);
 
         ExchangePair exchangePair = new ExchangePair(new Money(new BigDecimal("1.5"), "BGN"), "EUR");
         Mockito.when(mockitoMemory.isMemoryExpired(exchangePair)).thenReturn(true);
@@ -48,8 +48,8 @@ public class ExchangeMoneyTest {
         CurrConvAPI mockitoCurrConvAPI = Mockito.mock(CurrConvAPI.class);
         Mockito.when(mockitoCurrConvAPI.fetchExchangeRateFor(exchangePair)).thenReturn("3");
 
-        ExchangeMoney exchangeMoney = new ExchangeMoney();
-        ExchangeCacheMemory cacheMemory = new ExchangeCacheMemory();
+        MoneyServiceImpl exchangeMoney = new MoneyServiceImpl();
+        ExchangeCacheMemoryImpl cacheMemory = new ExchangeCacheMemoryImpl();
 
         Money exchange = exchangeMoney.exchange(exchangePair, mockitoCurrConvAPI, logger, cacheMemory);
 

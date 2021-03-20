@@ -1,20 +1,22 @@
-package external;
+package com.service;
 
-import domain.entities.Money;
-import domain.external.ExchangeService;
-import domain.io.Logger;
-import helper.ExchangePair;
-import repository.ExchangeCacheMemory;
+import com.domain.entities.Money;
+import com.external.CurrConvAPI;
+import com.domain.io.Logger;
+import com.console.helper.ExchangePair;
+import com.repository.ExchangeCacheMemoryImpl;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
-public class ExchangeMoney implements ExchangeService {
+@Component
+public class MoneyServiceImpl implements MoneyService {
 
     @Override
     public Money exchange(ExchangePair exchangePair,
                           CurrConvAPI currConv,
                           Logger logger,
-                          ExchangeCacheMemory cacheMemory) {
+                          ExchangeCacheMemoryImpl cacheMemory) {
 
         String rate;
 

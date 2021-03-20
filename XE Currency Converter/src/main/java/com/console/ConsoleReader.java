@@ -1,10 +1,12 @@
-package console;
+package com.console;
 
-import domain.io.Logger;
-import helper.checkInput.CheckInput;
+import com.domain.io.Logger;
+import com.helper.checkInput.CheckInput;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class ConsoleReader {
 
     public String readCommandAndCheck(Scanner scanner,

@@ -1,4 +1,4 @@
-package com.helper;
+package com.console.helper;
 
 public class ParseRate {
 

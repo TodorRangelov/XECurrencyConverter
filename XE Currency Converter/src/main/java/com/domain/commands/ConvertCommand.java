@@ -1,26 +1,26 @@
-package domain.commands;
+package com.domain.commands;
 
-import domain.entities.Money;
-import domain.external.ExchangeService;
-import domain.io.Logger;
-import external.CurrConvAPI;
-import helper.ExchangePair;
-import repository.ExchangeCacheMemory;
+import com.domain.entities.Money;
+import com.service.MoneyService;
+import com.domain.io.Logger;
+import com.external.CurrConvAPI;
+import com.console.helper.ExchangePair;
+import com.repository.ExchangeCacheMemoryImpl;
 
 public class ConvertCommand implements Command {
 
     private ExchangePair exchangePair;
     private Logger logger;
     private CurrConvAPI currConv;
-    private ExchangeService exchangeService;
-    private ExchangeCacheMemory cacheMemory;
+    private MoneyService exchangeService;
+    private ExchangeCacheMemoryImpl cacheMemory;
 
     public ConvertCommand(
             ExchangePair exchangePair,
             Logger logger,
             CurrConvAPI currConv,
-            ExchangeService exchangeService,
-            ExchangeCacheMemory cacheMemory) {
+            MoneyService exchangeService,
+            ExchangeCacheMemoryImpl cacheMemory) {
 
         this.exchangePair = exchangePair;
         this.logger = logger;

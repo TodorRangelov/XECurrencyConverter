@@ -1,31 +1,36 @@
-package console;
+package com.console;
 
-import domain.commands.ConvertCommand;
-import domain.commands.EndCommand;
-import domain.io.Logger;
-import external.CurrConvAPI;
-import external.ExchangeMoney;
-import helper.ExchangePair;
-import helper.ParserCommand;
-import repository.ExchangeCacheMemory;
+import com.domain.commands.ConvertCommand;
+import com.domain.commands.EndCommand;
+import com.domain.entities.dtos.UserRegisterDto;
+import com.domain.io.Logger;
+import com.external.CurrConvAPI;
+import com.service.MoneyServiceImpl;
+import com.console.helper.ExchangePair;
+import com.repository.ExchangeCacheMemoryImpl;
+import com.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-
+@Component
 public class ConsoleCommandExecutor {
 
     private CurrConvAPI currConvExchangeService;
     private Logger logger;
-    private ExchangeMoney exchangeMoney;
-    private ExchangeCacheMemory cacheMemory;
+    private MoneyServiceImpl exchangeMoney;
+    private ExchangeCacheMemoryImpl cacheMemory;
+    private final UserService userService;
 
+    @Autowired
     public ConsoleCommandExecutor(CurrConvAPI currConvExchangeService,
                                   Logger logger,
-                                  ExchangeMoney exchangeMoney,
-                                  ExchangeCacheMemory cacheMemory) {
+                                  MoneyServiceImpl exchangeMoney,
+                                  ExchangeCacheMemoryImpl cacheMemory, UserService userService) {
         this.currConvExchangeService = currConvExchangeService;
         this.logger = logger;
         this.exchangeMoney = exchangeMoney;
         this.cacheMemory = cacheMemory;
+        this.userService = userService;
     }
 
     public void execute(String command, ExchangePair exchangePair) {
@@ -47,6 +52,14 @@ public class ConsoleCommandExecutor {
                         exchangeMoney,
                         cacheMemory
                         ).execute();
+                break;
+
+            case "REGISTER":
+
+                UserRegisterDto userRegisterDto = new UserRegisterDto();
+
+                userService.registerUser(userRegisterDto);
+
                 break;
         }
     }

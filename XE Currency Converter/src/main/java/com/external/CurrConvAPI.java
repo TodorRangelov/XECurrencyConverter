@@ -1,6 +1,7 @@
-package external;
+package com.external;
 
-import helper.ExchangePair;
+import com.console.helper.ExchangePair;
+import org.springframework.stereotype.Component;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -8,8 +9,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-import static helper.ParseRate.parseRateToString;
+import static com.console.helper.ParseRate.parseRateToString;
 
+@Component
 public class CurrConvAPI {
 
 //        private static final String API_KEY = System.getenv("API_KEY");

@@ -2,7 +2,7 @@ package repository;
 
 import com.domain.entities.Money;
 import com.console.helper.ExchangePair;
-import com.repository.ExchangeCacheMemory;
+import com.repository.ExchangeCacheMemoryImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class ExchangeCacheMemoryTest {
     @Test
     public void isMemoryExpiredReturnTrueWhenCalledForFirstTime() {
 
-        ExchangeCacheMemory cacheMemory = new ExchangeCacheMemory();
+        ExchangeCacheMemoryImpl cacheMemory = new ExchangeCacheMemoryImpl();
         ExchangePair exchangePair = new ExchangePair(new Money(new BigDecimal(1), "BGN"), "USD");
 
 
@@ -22,7 +22,7 @@ public class ExchangeCacheMemoryTest {
 
     @Test
     public void isMemoryExpiredReturnsTrue_WhenMemoryHasExpired() throws InterruptedException {
-        ExchangeCacheMemory cacheMemory = new ExchangeCacheMemory();
+        ExchangeCacheMemoryImpl cacheMemory = new ExchangeCacheMemoryImpl();
         ExchangePair exchangePair = new ExchangePair(new Money(new BigDecimal(1), "BGN"), "USD");
 
         cacheMemory.putValue(exchangePair, "1");
@@ -42,7 +42,7 @@ public class ExchangeCacheMemoryTest {
     @Test
     public void isMemoryExpiredReturnFalseWhenMemoryIsValid() {
 
-        ExchangeCacheMemory cacheMemory = new ExchangeCacheMemory();
+        ExchangeCacheMemoryImpl cacheMemory = new ExchangeCacheMemoryImpl();
         ExchangePair exchangePair = new ExchangePair(new Money(new BigDecimal(1), "BGN"), "USD");
 
         cacheMemory.putValue(exchangePair, "1");

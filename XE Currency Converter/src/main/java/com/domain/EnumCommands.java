@@ -1,6 +1,9 @@
-package com.enumeration;
+package com.domain;
 
 public enum EnumCommands {
     CONVERT,
-    END;
+    END,
+    REGISTER,
+    LOGIN,
+    LOGOUT;
 }

@@ -1,6 +1,6 @@
-package helper.checkInput;
+package com.helper.checkInput;
 
-import enumeration.EnumCommands;
+import com.domain.EnumCommands;
 
 public class IncorrectCommands implements CheckInput {
 

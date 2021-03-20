@@ -1,7 +1,7 @@
-package com.helper;
+package com.console.helper;
 
 import com.domain.entities.Money;
-import com.enumeration.EnumCommands;
+import com.domain.EnumCommands;
 
 import java.math.BigDecimal;
 import java.util.List;

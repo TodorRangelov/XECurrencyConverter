@@ -1,4 +1,4 @@
-package domain.io;
+package com.domain.io;
 
 public interface Logger {
 

@@ -1,4 +1,4 @@
-package domain.commands;
+package com.domain.commands;
 
 public class EndCommand implements Command {
     @Override

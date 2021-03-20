@@ -1,4 +1,4 @@
-package helper.checkInput;
+package com.helper.checkInput;
 
 public interface CheckInput {
 
