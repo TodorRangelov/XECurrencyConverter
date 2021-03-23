@@ -116,7 +116,7 @@ public class ConsoleRunner {
 
                 System.out.println(userService.registerUser(userRegisterDto));
 
-                return;
+                continue;
             }
 
 

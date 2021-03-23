@@ -47,6 +47,9 @@ public class UserServiceImpl implements UserService {
         }
 
        sb.append(validateEmailAndPassword(user));
+        if (!sb.isEmpty()) {
+            return String.join("\n", sb);
+        }
 
         this.userRepository.saveAndFlush(user);
 
