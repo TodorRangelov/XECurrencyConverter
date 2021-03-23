@@ -35,7 +35,6 @@ public class ConsoleRunner {
     private ConsoleCommandExecutor commandExecutor;
 
 
-
     @Autowired
     public ConsoleRunner(
             ConsoleLogger consoleLogger,
@@ -97,6 +96,21 @@ public class ConsoleRunner {
 
                 parser = new ParserCommand(args);
                 exchangePair = parser.getExchangePair(args);
+            }
+
+            if (args.get(0).equals("LOGOUT")) {
+                if (userService.getLoginUserEmail().equals("")) {
+                    System.out.println("Cannot log out. No user was logged in.");
+                    continue;
+                }
+
+                System.out.println(userService.logoutUser());
+                continue;
+            }
+
+            if (!userService.getLoginUserEmail().equals("")) {
+                System.out.printf("User with email %s is logged in!%n", userService.getLoginUserEmail());
+                continue;
             }
 
             if (args.get(0).equals("REGISTER")) {

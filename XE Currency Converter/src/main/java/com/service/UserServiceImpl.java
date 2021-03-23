@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
         this.modelMapper = new ModelMapper();
+        this.loginUserEmail = "";
     }
 
     @Override
@@ -91,5 +92,13 @@ public class UserServiceImpl implements UserService {
         return sb;
     }
 
+    public String logoutUser() {
+        String s = "User with email " + this.loginUserEmail + " successfully logged out";
+        this.loginUserEmail = "";
+        return s;
+    }
 
+    public String getLoginUserEmail() {
+        return loginUserEmail;
+    }
 }

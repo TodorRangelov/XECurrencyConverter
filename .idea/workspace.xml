@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a589592c-f35e-40d6-ae98-0fc30ca616ca" name="Default Changelist" comment="Fix validate email and password.">
-      <change afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/entities/dtos/OrderDto.java" afterDir="false" />
+    <list default="true" id="a589592c-f35e-40d6-ae98-0fc30ca616ca" name="Default Changelist" comment="Refactored ConsoleCommandExecutor.class,&#10;added LoginUser method in ConsoleRunner and&#10;added OrderDto.class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleCommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleLogger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/helper/UserMessagesHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/helper/UserMessagesHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/entities/dtos/UserRegisterDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/entities/dtos/UserRegisterDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +121,7 @@
       <workItem from="1616095701735" duration="2127000" />
       <workItem from="1616155992298" duration="22142000" />
       <workItem from="1616411549419" duration="728000" />
-      <workItem from="1616504243654" duration="6266000" />
+      <workItem from="1616504243654" duration="9749000" />
     </task>
     <task id="LOCAL-00001" summary="Added fields in User.class">
       <created>1616164050493</created>
@@ -145,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616505949336</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Refactored ConsoleCommandExecutor.class,&#10;added LoginUser method in ConsoleRunner and&#10;added OrderDto.class">
+      <created>1616510956813</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1616510956813</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +173,23 @@
     <MESSAGE value="Added fields in User.class" />
     <MESSAGE value="Refactored ConsoleRunner.&#10;Added fields to User, UserRegisterDto.class" />
     <MESSAGE value="Fix validate email and password." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix validate email and password." />
+    <MESSAGE value="Refactored ConsoleCommandExecutor.class,&#10;added LoginUser method in ConsoleRunner and&#10;added OrderDto.class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored ConsoleCommandExecutor.class,&#10;added LoginUser method in ConsoleRunner and&#10;added OrderDto.class" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserServiceImpl.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
