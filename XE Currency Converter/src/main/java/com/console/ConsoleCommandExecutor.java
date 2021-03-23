@@ -9,28 +9,30 @@ import com.service.MoneyServiceImpl;
 import com.console.helper.ExchangePair;
 import com.repository.ExchangeCacheMemoryImpl;
 import com.service.UserService;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@Getter
+@Setter
 public class ConsoleCommandExecutor {
 
     private CurrConvAPI currConvExchangeService;
     private Logger logger;
     private MoneyServiceImpl exchangeMoney;
     private ExchangeCacheMemoryImpl cacheMemory;
-    private final UserService userService;
 
     @Autowired
     public ConsoleCommandExecutor(CurrConvAPI currConvExchangeService,
                                   Logger logger,
                                   MoneyServiceImpl exchangeMoney,
-                                  ExchangeCacheMemoryImpl cacheMemory, UserService userService) {
+                                  ExchangeCacheMemoryImpl cacheMemory) {
         this.currConvExchangeService = currConvExchangeService;
         this.logger = logger;
         this.exchangeMoney = exchangeMoney;
         this.cacheMemory = cacheMemory;
-        this.userService = userService;
     }
 
     public void execute(String command, ExchangePair exchangePair) {
@@ -54,13 +56,6 @@ public class ConsoleCommandExecutor {
                         ).execute();
                 break;
 
-            case "REGISTER":
-
-                UserRegisterDto userRegisterDto = new UserRegisterDto();
-
-                userService.registerUser(userRegisterDto);
-
-                break;
         }
     }
 

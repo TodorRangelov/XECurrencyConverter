@@ -12,7 +12,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.util.Optional;
 import java.util.Set;
 
 
@@ -21,6 +20,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private ModelMapper modelMapper;
+    private String loginUserEmail;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -54,6 +54,24 @@ public class UserServiceImpl implements UserService {
         this.userRepository.saveAndFlush(user);
 
         return String.format("%s was registered", user.getName());
+    }
+
+    @Override
+    public String loginUser(String email, String password) {
+
+        User byEmail = userRepository.findByEmail(email).orElse(null);
+
+        if (byEmail == null) {
+            return "Incorrect email";
+        }
+
+        if (!byEmail.getPassword().equals(password)) {
+            return "Incorrect password";
+        }
+
+        this.loginUserEmail = email;
+
+        return String.format("Successfully logged in %s", byEmail.getName());
     }
 
     private StringBuilder validateEmailAndPassword(User user) {

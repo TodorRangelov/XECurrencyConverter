@@ -1,7 +1,6 @@
 package com.console;
 
 import com.domain.io.Logger;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component

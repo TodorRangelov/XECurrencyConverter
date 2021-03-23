@@ -119,6 +119,17 @@ public class ConsoleRunner {
                 continue;
             }
 
+            if (args.get(0).equals("LOGIN")) {
+
+                System.out.println("Enter Email:");
+                String email = scanner.nextLine();
+
+                System.out.println("Enter Password:");
+                String password = scanner.nextLine();
+
+                System.out.println(userService.loginUser(email, password));
+            }
+
 
             try {
                 commandExecutor.execute(parser.getCommand().toString(), exchangePair);

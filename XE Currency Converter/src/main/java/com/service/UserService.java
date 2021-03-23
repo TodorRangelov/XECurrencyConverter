@@ -6,5 +6,5 @@ public interface UserService {
 
     String registerUser(UserRegisterDto userRegisterDto);
 
-
+    String loginUser(String email, String password);
 }
