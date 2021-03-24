@@ -63,7 +63,56 @@ public class ConsoleRunner {
         while (true) {
             List<String> args = new ArrayList<>();
 
-            args.add(reader.readCommandAndCheck(
+            if (userService.getLoginUserEmail().equals("")) {
+
+                args.add(reader.readCommandRegisterLoginOrEndAndCheck(
+                        scanner,
+                        consoleLogger,
+                        messages.selectCommandRegisterLoginOrEnd(),
+                        new IncorrectCommands()));
+
+                if (args.get(0).equals("REGISTER")) {
+                    UserRegisterDto userRegisterDto = new UserRegisterDto();
+
+                    System.out.println("Enter Name:");
+                    userRegisterDto.setName(scanner.nextLine());
+
+                    System.out.println("Enter Email:");
+                    userRegisterDto.setEmail(scanner.nextLine());
+
+                    System.out.println("Enter Password:");
+                    userRegisterDto.setPassword(scanner.nextLine());
+
+                    System.out.println("Confirm Password:");
+                    userRegisterDto.setConfirmPassword(scanner.nextLine());
+
+                    System.out.println(userService.registerUser(userRegisterDto));
+
+                    args.remove(0);
+                    continue;
+                }
+
+                if (args.get(0).equals("LOGIN")) {
+
+                    System.out.println("Enter Email:");
+                    String email = scanner.nextLine();
+
+                    System.out.println("Enter Password:");
+                    String password = scanner.nextLine();
+
+                    System.out.println(userService.loginUser(email, password));
+
+                    args.remove(0);
+                }
+            }
+
+//            String email1 = userService.getLoginUserEmail();
+//            if (!email1.equals("") && args.get(0).equals("LOGIN")) {
+//                System.out.printf("User with email %s is logged in!%n", userService.getLoginUserEmail());
+//                continue;
+//            }
+
+            args.add(reader.readCommandConvertLogoutOrEndAndCheck(
                     scanner,
                     consoleLogger,
                     messages.selectCommand(),
@@ -72,23 +121,26 @@ public class ConsoleRunner {
             ParserCommand parser = new ParserCommand(args);
 
             if (args.get(0).equals("END")) {
+                args.set(0, "END");
                 commandExecutor.execute(parser.getCommand().toString(), exchangePair);
             }
 
             if (args.get(0).equals("CONVERT")) {
-                args.add(reader.readCommandAndCheck(
+                args.set(0, "CONVERT");
+
+                args.add(reader.readCommandRegisterLoginOrEndAndCheck(
                         scanner,
                         consoleLogger,
                         messages.value(),
                         new IncorrectValue()));
 
-                args.add(reader.readCommandAndCheck(
+                args.add(reader.readCommandRegisterLoginOrEndAndCheck(
                         scanner,
                         consoleLogger,
                         messages.selectCurrencyConvert(),
                         new IncorrectCurrency()));
 
-                args.add(reader.readCommandAndCheck(
+                args.add(reader.readCommandRegisterLoginOrEndAndCheck(
                         scanner,
                         consoleLogger,
                         messages.selectToCurrency(),
@@ -98,6 +150,12 @@ public class ConsoleRunner {
                 exchangePair = parser.getExchangePair(args);
             }
 
+            try {
+                commandExecutor.execute(parser.getCommand().toString(), exchangePair);
+            } catch (Exception e) {
+                consoleLogger.logLine("something went wrong during HTTP request to external API");
+            }
+
             if (args.get(0).equals("LOGOUT")) {
                 if (userService.getLoginUserEmail().equals("")) {
                     System.out.println("Cannot log out. No user was logged in.");
@@ -105,51 +163,9 @@ public class ConsoleRunner {
                 }
 
                 System.out.println(userService.logoutUser());
-                continue;
-            }
-
-            if (!userService.getLoginUserEmail().equals("")) {
-                System.out.printf("User with email %s is logged in!%n", userService.getLoginUserEmail());
-                continue;
-            }
-
-            if (args.get(0).equals("REGISTER")) {
-                UserRegisterDto userRegisterDto = new UserRegisterDto();
-
-                System.out.println("Enter Name:");
-                userRegisterDto.setName(scanner.nextLine());
-
-                System.out.println("Enter Email:");
-                userRegisterDto.setEmail(scanner.nextLine());
-
-                System.out.println("Enter Password:");
-                userRegisterDto.setPassword(scanner.nextLine());
-
-                System.out.println("Confirm Password:");
-                userRegisterDto.setConfirmPassword(scanner.nextLine());
-
-                System.out.println(userService.registerUser(userRegisterDto));
-
-                continue;
-            }
-
-            if (args.get(0).equals("LOGIN")) {
-
-                System.out.println("Enter Email:");
-                String email = scanner.nextLine();
-
-                System.out.println("Enter Password:");
-                String password = scanner.nextLine();
-
-                System.out.println(userService.loginUser(email, password));
             }
 
 
-            try {
-                commandExecutor.execute(parser.getCommand().toString(), exchangePair);
-            } catch (Exception e) {
-                consoleLogger.logLine("something went wrong during HTTP request to external API");
-            }
         }
     }
 

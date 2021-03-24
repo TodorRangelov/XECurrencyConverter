@@ -1,5 +1,6 @@
 package com.service;
 
+import com.domain.entities.User;
 import com.domain.entities.dtos.UserRegisterDto;
 
 public interface UserService {
@@ -11,4 +12,6 @@ public interface UserService {
     String getLoginUserEmail();
 
     String logoutUser();
+
+    User getLoginUser();
 }

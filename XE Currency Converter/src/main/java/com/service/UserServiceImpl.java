@@ -98,6 +98,11 @@ public class UserServiceImpl implements UserService {
         return s;
     }
 
+    @Override
+    public User getLoginUser() {
+        return this.userRepository.getUserByEmail(this.loginUserEmail).orElse(null);
+    }
+
     public String getLoginUserEmail() {
         return loginUserEmail;
     }

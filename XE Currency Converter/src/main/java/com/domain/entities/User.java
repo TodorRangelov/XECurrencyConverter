@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -33,11 +36,17 @@ public class User {
     @Column(name = "role")
     private Role role;
 
-    @ManyToOne(targetEntity = Order.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Order orders;
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Order> orders;
 
     public User() {
+    }
+
+    public Set<Order> getOrders() {
+        if (this.orders == null) {
+            this.orders = new HashSet<>();
+        }
+        return orders;
     }
 
 }

@@ -9,7 +9,11 @@ public class UserMessagesHelper {
     }
 
     public String selectCommand() {
-        return String.format("%nSelect command:%nCONVERT%nREGISTER USER%nLOGIN USER%nEND");
+        return String.format("%nSelect command:%nCONVERT press C%nLOGOUT press L%nEND press E");
+    }
+
+    public String selectCommandRegisterLoginOrEnd() {
+        return String.format("%nSelect command:%nREGISTER USER press R%nLOGIN USER press L%nEND press E");
     }
 
     public String selectCurrencyConvert() {

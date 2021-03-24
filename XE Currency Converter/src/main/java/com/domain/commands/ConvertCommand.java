@@ -7,7 +7,10 @@ import com.external.CurrConvAPI;
 import com.console.helper.ExchangePair;
 import com.repository.ExchangeCacheMemoryImpl;
 
-public class ConvertCommand implements Command {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ConvertCommand {
 
     private ExchangePair exchangePair;
     private Logger logger;
@@ -29,16 +32,21 @@ public class ConvertCommand implements Command {
         this.cacheMemory = cacheMemory;
     }
 
-    @Override
-    public void execute() {
+    public List<String> execute() {
         Money exchangedMoney = exchangeService.exchange(exchangePair, currConv, logger, cacheMemory);
+
+        List<String> s = new ArrayList<>();
 
         if (exchangePair.getRate().matches(".*\\d.*")) {
 
-            logger.logLine(String.format("Currency rate: %s", exchangePair.getRate()));
+            s.add(String.format("%s", exchangePair.getRate()));
+            s.add(String.format("Currency rate: %s", exchangePair.getRate()));
         }
 
-        this.logger.logLine(exchangedMoney.toString());
+        s.add(exchangedMoney.toString());
+        s.add(String.format("%.2f", exchangedMoney.getValue()));
+
+        return s;
     }
 
 }

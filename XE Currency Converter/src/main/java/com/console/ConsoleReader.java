@@ -9,14 +9,57 @@ import java.util.Scanner;
 @Component
 public class ConsoleReader {
 
-    public String readCommandAndCheck(Scanner scanner,
-                                      Logger logger,
-                                      String userMessages,
-                                      CheckInput checkInput) {
+    public String readCommandConvertLogoutOrEndAndCheck(Scanner scanner,
+                                                        Logger logger,
+                                                        String userMessages,
+                                                        CheckInput checkInput) {
 
         while (true) {
             logger.logLine(userMessages);
             String line = scanner.nextLine().toUpperCase();
+
+            switch (line) {
+                case "C":
+                    line = "CONVERT";
+                    break;
+                case "L":
+                    line = "LOGOUT";
+                    break;
+                default:
+                    line = "END";
+                    break;
+            }
+
+            if (checkInput.check(line)) {
+                logger.logLine("Incorrect command! Try again.");
+
+                continue;
+            }
+
+            return line;
+        }
+    }
+
+    public String readCommandRegisterLoginOrEndAndCheck(Scanner scanner,
+                                                        Logger logger,
+                                                        String userMessages,
+                                                        CheckInput checkInput) {
+
+        while (true) {
+            logger.logLine(userMessages);
+            String line = scanner.nextLine().toUpperCase();
+
+            switch (line) {
+                case "R":
+                    line = "REGISTER";
+                    break;
+                case "L":
+                    line = "LOGIN";
+                    break;
+                case "END":
+                    line = "END";
+                    break;
+            }
 
             if (checkInput.check(line)) {
                 logger.logLine("Incorrect command! Try again.");

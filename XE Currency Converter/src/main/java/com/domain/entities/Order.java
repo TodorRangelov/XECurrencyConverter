@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -26,8 +27,8 @@ public class Order {
     @Column(name = "currency_rate", nullable = false)
     private BigDecimal currencyRate;
 
-    @OneToMany(targetEntity = User.class, mappedBy = "orders", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<User> users;
+    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private User user;
 
     public Order() {
     }
