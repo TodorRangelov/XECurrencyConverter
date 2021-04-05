@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,6 +27,9 @@ public class Order {
 
     @Column(name = "currency_rate", nullable = false)
     private BigDecimal currencyRate;
+
+    @Column(name = "date")
+    private LocalDate date;
 
     @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private User user;

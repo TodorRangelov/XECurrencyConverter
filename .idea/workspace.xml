@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a589592c-f35e-40d6-ae98-0fc30ca616ca" name="Default Changelist" comment="Added OrderService and OrderServiceImpl.">
-      <change afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/OrderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/OrderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleCommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/helper/UserMessagesHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/helper/UserMessagesHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/commands/ConvertCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/commands/ConvertCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/entities/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/entities/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/OrderServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +53,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/FTP/Java/04. Java DB/Hibernate/05. Spring Data Intro/springDataDemo" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -117,7 +107,10 @@
       <workItem from="1616155992298" duration="22142000" />
       <workItem from="1616411549419" duration="728000" />
       <workItem from="1616504243654" duration="17212000" />
-      <workItem from="1616586120992" duration="10323000" />
+      <workItem from="1616586120992" duration="11886000" />
+      <workItem from="1616685806420" duration="1515000" />
+      <workItem from="1617288591868" duration="3903000" />
+      <workItem from="1617638496201" duration="2615000" />
     </task>
     <task id="LOCAL-00001" summary="Added fields in User.class">
       <created>1616164050493</created>
@@ -154,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616515943313</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added OrderService and OrderServiceImpl.&#10;Refactored Order.class and User.class spring annotations.&#10;Already save orders in database.&#10;Refactored ConsoleReader.class, UserMessagesHelper.class, ConsoleRunner.class.">
+      <created>1616596740470</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1616596740470</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,27 +178,7 @@
     <MESSAGE value="Fix validate email and password." />
     <MESSAGE value="Refactored ConsoleCommandExecutor.class,&#10;added LoginUser method in ConsoleRunner and&#10;added OrderDto.class" />
     <MESSAGE value="Added logoutUser method in ConsoleRunner. &#10;Added field loginUserEmail and logoutUser method in UserServiceImpl." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added logoutUser method in ConsoleRunner. &#10;Added field loginUserEmail and logoutUser method in UserServiceImpl." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/OrderServiceImpl.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/helper/checkInput/IncorrectValue.java</url>
-          <line>6</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added OrderService and OrderServiceImpl.&#10;Refactored Order.class and User.class spring annotations.&#10;Already save orders in database.&#10;Refactored ConsoleReader.class, UserMessagesHelper.class, ConsoleRunner.class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added OrderService and OrderServiceImpl.&#10;Refactored Order.class and User.class spring annotations.&#10;Already save orders in database.&#10;Refactored ConsoleReader.class, UserMessagesHelper.class, ConsoleRunner.class." />
   </component>
 </project>

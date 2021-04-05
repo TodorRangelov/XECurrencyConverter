@@ -9,13 +9,16 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
     private ModelMapper modelMapper;
     private final UserRepository userRepository;
-
 
 
     @Autowired
@@ -29,6 +32,9 @@ public class OrderServiceImpl implements OrderService{
     public void addOrder(OrderDto orderDto, User user) {
 
         Order order = modelMapper.map(orderDto, Order.class);
+
+        order.setDate(getCurrentDate());
+
         order.setUser(user);
 
         user.getOrders().add(order);
@@ -36,5 +42,11 @@ public class OrderServiceImpl implements OrderService{
 
         userRepository.saveAndFlush(user);
 //        orderRepository.saveAndFlush(order);
+    }
+
+    private LocalDate getCurrentDate() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("d/M/yyyy");
+        return LocalDate.parse(now.format(format), DateTimeFormatter.ofPattern("d/M/yyyy"));
     }
 }
