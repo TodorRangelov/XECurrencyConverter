@@ -8,6 +8,7 @@ import com.console.helper.ParserCommand;
 import com.helper.checkInput.*;
 import com.console.helper.UserMessagesHelper;
 import com.repository.ExchangeCacheMemoryImpl;
+import com.service.OrderService;
 import com.service.UserService;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +32,7 @@ public class ConsoleRunner {
     private MoneyServiceImpl exchangeMoney;
     private ExchangeCacheMemoryImpl cacheMemory;
     private final UserService userService;
+    private final OrderService orderService;
     private ExchangePair exchangePair;
     private ConsoleCommandExecutor commandExecutor;
 
@@ -45,7 +47,7 @@ public class ConsoleRunner {
             ExchangeCacheMemoryImpl cacheMemory,
             ConsoleCommandExecutor commandExecutor,
             ExchangePair exchangePair,
-            UserService userService) {
+            UserService userService, OrderService orderService) {
         this.consoleLogger = consoleLogger;
         this.reader = reader;
         this.messages = messages;
@@ -55,6 +57,7 @@ public class ConsoleRunner {
         this.commandExecutor = commandExecutor;
         this.exchangePair = exchangePair;
         this.userService = userService;
+        this.orderService = orderService;
     }
 
     public void run() {
@@ -63,7 +66,7 @@ public class ConsoleRunner {
         while (true) {
             List<String> args = new ArrayList<>();
 
-            if (userService.getLoginUserEmail().equals("")) {
+            if (isThereLoggedUser()) {
 
                 args.add(reader.readCommandRegisterLoginOrEndAndCheck(
                         scanner,
@@ -72,45 +75,20 @@ public class ConsoleRunner {
                         new IncorrectCommands()));
 
                 if (args.get(0).equals("REGISTER")) {
-                    UserRegisterDto userRegisterDto = new UserRegisterDto();
+                    this.registerUser(args);
 
-                    System.out.println("Enter Name:");
-                    userRegisterDto.setName(scanner.nextLine());
-
-                    System.out.println("Enter Email:");
-                    userRegisterDto.setEmail(scanner.nextLine());
-
-                    System.out.println("Enter Password:");
-                    userRegisterDto.setPassword(scanner.nextLine());
-
-                    System.out.println("Confirm Password:");
-                    userRegisterDto.setConfirmPassword(scanner.nextLine());
-
-                    System.out.println(userService.registerUser(userRegisterDto));
-
-                    args.remove(0);
                     continue;
                 }
 
                 if (args.get(0).equals("LOGIN")) {
+                    this.login(args);
+                }
 
-                    System.out.println("Enter Email:");
-                    String email = scanner.nextLine();
-
-                    System.out.println("Enter Password:");
-                    String password = scanner.nextLine();
-
-                    System.out.println(userService.loginUser(email, password));
-
-                    args.remove(0);
+                // login admin user
+                if (args.get(0).equals("TEST")) {
+                    this.test(args);
                 }
             }
-
-//            String email1 = userService.getLoginUserEmail();
-//            if (!email1.equals("") && args.get(0).equals("LOGIN")) {
-//                System.out.printf("User with email %s is logged in!%n", userService.getLoginUserEmail());
-//                continue;
-//            }
 
             args.add(reader.readCommandConvertLogoutOrEndAndCheck(
                     scanner,
@@ -126,28 +104,11 @@ public class ConsoleRunner {
             }
 
             if (args.get(0).equals("CONVERT")) {
-                args.set(0, "CONVERT");
+                this.convert(args, parser);
+            }
 
-                args.add(reader.readCommandRegisterLoginOrEndAndCheck(
-                        scanner,
-                        consoleLogger,
-                        messages.value(),
-                        new IncorrectValue()));
-
-                args.add(reader.readCommandRegisterLoginOrEndAndCheck(
-                        scanner,
-                        consoleLogger,
-                        messages.selectCurrencyConvert(),
-                        new IncorrectCurrency()));
-
-                args.add(reader.readCommandRegisterLoginOrEndAndCheck(
-                        scanner,
-                        consoleLogger,
-                        messages.selectToCurrency(),
-                        new IncorrectCurrency()));
-
-                parser = new ParserCommand(args);
-                exchangePair = parser.getExchangePair(args);
+            if (args.get(0).equals("HISTORY")) {
+                this.getAllUserOrders();
             }
 
             try {
@@ -164,9 +125,84 @@ public class ConsoleRunner {
 
                 System.out.println(userService.logoutUser());
             }
-
-
         }
+    }
+
+    private void getAllUserOrders() {
+
+//        TODO
+
+    }
+
+    private boolean isThereLoggedUser() {
+
+        if (userService.getLoginUserEmail().equals("")) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void convert(List<String> args, ParserCommand parser) {
+        args.set(0, "CONVERT");
+
+        args.add(reader.readCommandRegisterLoginOrEndAndCheck(
+                scanner,
+                consoleLogger,
+                messages.value(),
+                new IncorrectValue()));
+
+        args.add(reader.readCommandRegisterLoginOrEndAndCheck(
+                scanner,
+                consoleLogger,
+                messages.selectCurrencyConvert(),
+                new IncorrectCurrency()));
+
+        args.add(reader.readCommandRegisterLoginOrEndAndCheck(
+                scanner,
+                consoleLogger,
+                messages.selectToCurrency(),
+                new IncorrectCurrency()));
+
+        parser = new ParserCommand(args);
+        exchangePair = parser.getExchangePair(args);
+    }
+
+    private void registerUser(List<String> args) {
+        UserRegisterDto userRegisterDto = new UserRegisterDto();
+
+        System.out.println("Enter Name:");
+        userRegisterDto.setName(scanner.nextLine());
+
+        System.out.println("Enter Email:");
+        userRegisterDto.setEmail(scanner.nextLine());
+
+        System.out.println("Enter Password:");
+        userRegisterDto.setPassword(scanner.nextLine());
+
+        System.out.println("Confirm Password:");
+        userRegisterDto.setConfirmPassword(scanner.nextLine());
+
+        System.out.println(userService.registerUser(userRegisterDto));
+
+        args.remove(0);
+    }
+
+    private void login(List<String> args) {
+        System.out.println("Enter Email:");
+        String email = scanner.nextLine();
+
+        System.out.println("Enter Password:");
+        String password = scanner.nextLine();
+
+        System.out.println(userService.loginUser(email, password));
+
+        args.remove(0);
+    }
+
+    private void test(List<String> args) {
+        System.out.println(userService.loginUser("asd@abv.bg", "asdA1asd"));
+        args.remove(0);
     }
 
 }

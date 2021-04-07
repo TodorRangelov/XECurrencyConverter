@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Set;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -48,5 +49,13 @@ public class OrderServiceImpl implements OrderService {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("d/M/yyyy");
         return LocalDate.parse(now.format(format), DateTimeFormatter.ofPattern("d/M/yyyy"));
+    }
+
+    @Override
+    public Set<OrderDto> getAllUsersOrders(Integer userId) {
+
+//        TODO
+
+        return null;
     }
 }

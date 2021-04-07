@@ -25,6 +25,9 @@ public class ConsoleReader {
                 case "L":
                     line = "LOGOUT";
                     break;
+                case "H":
+                    line = "HISTORY";
+                    break;
                 default:
                     line = "END";
                     break;
@@ -55,6 +58,9 @@ public class ConsoleReader {
                     break;
                 case "L":
                     line = "LOGIN";
+                    break;
+                case "T":
+                    line = "TEST";
                     break;
                 case "END":
                     line = "END";

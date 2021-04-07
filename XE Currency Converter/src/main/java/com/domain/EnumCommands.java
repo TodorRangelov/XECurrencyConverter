@@ -5,5 +5,7 @@ public enum EnumCommands {
     END,
     REGISTER,
     LOGIN,
-    LOGOUT;
+    LOGOUT,
+    TEST,
+    HISTORY
 }
