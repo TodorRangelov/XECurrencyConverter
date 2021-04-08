@@ -2,6 +2,7 @@ package com.service;
 
 import com.domain.entities.Role;
 import com.domain.entities.User;
+import com.domain.entities.dtos.UserLogDto;
 import com.domain.entities.dtos.UserRegisterDto;
 import com.repository.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private ModelMapper modelMapper;
     private String loginUserEmail;
+    private UserLogDto userLogDto;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -58,21 +60,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String loginUser(String email, String password) {
+    public UserLogDto loginUser(String email, String password) {
 
         User byEmail = userRepository.findByEmail(email).orElse(null);
 
         if (byEmail == null) {
-            return "Incorrect email";
+            System.out.println("Incorrect email");
         }
 
         if (!byEmail.getPassword().equals(password)) {
-            return "Incorrect password";
+            System.out.println("Incorrect password");
         }
 
-        this.loginUserEmail = email;
+        this.userLogDto = modelMapper.map(byEmail, UserLogDto.class);
 
-        return String.format("Successfully logged in %s", byEmail.getName());
+        return userLogDto;
     }
 
     private StringBuilder validateEmailAndPassword(User user) {

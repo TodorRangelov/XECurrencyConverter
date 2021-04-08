@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Service
@@ -54,8 +55,19 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Set<OrderDto> getAllUsersOrders(Integer userId) {
 
-//        TODO
-
-        return null;
+        return mapOrderToOrderDto(orderRepository.findAllByUserId(userId));
     }
+
+    private Set<OrderDto> mapOrderToOrderDto(Set<Order> orders) {
+
+        Set<OrderDto> orderDtos = new LinkedHashSet<>();
+
+        orders.forEach(o -> {
+            OrderDto orderDto = modelMapper.map(o, OrderDto.class);
+            orderDtos.add(orderDto);
+        });
+
+        return orderDtos;
+    }
+
 }

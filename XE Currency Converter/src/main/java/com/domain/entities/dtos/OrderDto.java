@@ -12,5 +12,6 @@ public class OrderDto {
     private String toCurrency;
     private String fromCurrency;
     private BigDecimal currencyRate;
+    private String date;
 
 }

@@ -1,5 +1,7 @@
 package com.console;
 
+import com.domain.entities.dtos.OrderDto;
+import com.domain.entities.dtos.UserLogDto;
 import com.domain.entities.dtos.UserRegisterDto;
 import com.external.CurrConvAPI;
 import com.service.MoneyServiceImpl;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 @Component
 @Getter
@@ -35,6 +38,7 @@ public class ConsoleRunner {
     private final OrderService orderService;
     private ExchangePair exchangePair;
     private ConsoleCommandExecutor commandExecutor;
+    private UserLogDto userLogDto;
 
 
     @Autowired
@@ -108,7 +112,7 @@ public class ConsoleRunner {
             }
 
             if (args.get(0).equals("HISTORY")) {
-                this.getAllUserOrders();
+                this.getAllUsersOrders();
             }
 
             try {
@@ -128,10 +132,13 @@ public class ConsoleRunner {
         }
     }
 
-    private void getAllUserOrders() {
+    private void getAllUsersOrders() {
 
-//        TODO
+        Integer logUserId = userLogDto.getId();
 
+        Set<OrderDto> allUsersOrders = orderService.getAllUsersOrders(logUserId);
+
+        consoleLogger.logAllUsersOrders(allUsersOrders);
     }
 
     private boolean isThereLoggedUser() {
@@ -189,6 +196,7 @@ public class ConsoleRunner {
     }
 
     private void login(List<String> args) {
+
         System.out.println("Enter Email:");
         String email = scanner.nextLine();
 
@@ -197,12 +205,21 @@ public class ConsoleRunner {
 
         System.out.println(userService.loginUser(email, password));
 
+        userService.loginUser(email, password);
+
+        printLogUser();
+
         args.remove(0);
     }
 
     private void test(List<String> args) {
-        System.out.println(userService.loginUser("asd@abv.bg", "asdA1asd"));
+        userLogDto = userService.loginUser("asd@abv.bg", "asdA1asd");
+        printLogUser();
         args.remove(0);
+    }
+
+    private void printLogUser() {
+        consoleLogger.logUserLogDto(userLogDto);
     }
 
 }
