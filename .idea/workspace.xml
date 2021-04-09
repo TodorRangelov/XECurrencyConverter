@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a589592c-f35e-40d6-ae98-0fc30ca616ca" name="Default Changelist" comment="Finished History method.">
+    <list default="true" id="a589592c-f35e-40d6-ae98-0fc30ca616ca" name="Default Changelist" comment="Refactoring ConsoleRunner, OrderServiceImpl, ConsoleReader and UserServiceImpl.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +112,7 @@
       <workItem from="1617638496201" duration="2864000" />
       <workItem from="1617808054305" duration="5427000" />
       <workItem from="1617899140604" duration="4661000" />
-      <workItem from="1617982980968" duration="5814000" />
+      <workItem from="1617982980968" duration="7216000" />
     </task>
     <task id="LOCAL-00001" summary="Added fields in User.class">
       <created>1616164050493</created>
@@ -181,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617903971426</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Refactoring ConsoleRunner, OrderServiceImpl, ConsoleReader and UserServiceImpl.">
+      <created>1617989220184</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1617989220185</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +212,8 @@
     <MESSAGE value="Added on Date to order." />
     <MESSAGE value="Added test method in ConsoleRunner.class,&#10;Added history method in ConsoleRunner.class,&#10;Added methods in OrderRepository.&#10;Refactoring ConsoleRunner.class." />
     <MESSAGE value="Finished History method." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished History method." />
+    <MESSAGE value="Refactoring ConsoleRunner, OrderServiceImpl, ConsoleReader and UserServiceImpl." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring ConsoleRunner, OrderServiceImpl, ConsoleReader and UserServiceImpl." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -228,6 +232,11 @@
           <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/helper/checkInput/IncorrectCommands.java</url>
           <line>9</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleReader.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

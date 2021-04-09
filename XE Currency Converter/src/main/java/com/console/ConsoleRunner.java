@@ -39,8 +39,6 @@ public class ConsoleRunner {
     private ExchangePair exchangePair;
     private ConsoleCommandExecutor commandExecutor;
     private List<String> args = new ArrayList<>();
-//    private UserLogDto userLogDto;
-
 
     @Autowired
     public ConsoleRunner(

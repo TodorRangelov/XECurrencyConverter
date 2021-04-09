@@ -21,14 +21,12 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private ModelMapper modelMapper;
-//    private String loginUserEmail;
     private UserLogDto userLogDto;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
         this.modelMapper = new ModelMapper();
-//        this.loginUserEmail = "";
     }
 
     @Override
@@ -113,11 +111,6 @@ public class UserServiceImpl implements UserService {
 
         return this.userRepository.getUserByEmail(this.userLogDto.getEmail()).orElse(null);
     }
-
-//    public String getLoginUserEmail() {
-//        return loginUserEmail;
-//    }
-
 
     public UserLogDto getUserLogDto() {
         return userLogDto;
