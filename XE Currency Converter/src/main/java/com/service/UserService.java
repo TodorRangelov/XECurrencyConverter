@@ -10,9 +10,11 @@ public interface UserService {
 
     UserLogDto loginUser(String email, String password);
 
-    String getLoginUserEmail();
+//    String getLoginUserEmail();
 
     String logoutUser();
 
     User getLoginUser();
+
+    UserLogDto getUserLogDto();
 }

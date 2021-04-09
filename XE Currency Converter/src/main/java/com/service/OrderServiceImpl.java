@@ -20,13 +20,10 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
     private ModelMapper modelMapper;
-    private final UserRepository userRepository;
-
 
     @Autowired
     public OrderServiceImpl(OrderRepository orderRepository, UserRepository userRepository) {
         this.orderRepository = orderRepository;
-        this.userRepository = userRepository;
         this.modelMapper = new ModelMapper();
     }
 
@@ -37,13 +34,11 @@ public class OrderServiceImpl implements OrderService {
 
         order.setDate(getCurrentDate());
 
+        orderRepository.save(order);
+
         order.setUser(user);
 
-        user.getOrders().add(order);
-
-
-        userRepository.saveAndFlush(user);
-//        orderRepository.saveAndFlush(order);
+        orderRepository.saveAndFlush(order);
     }
 
     private LocalDate getCurrentDate() {

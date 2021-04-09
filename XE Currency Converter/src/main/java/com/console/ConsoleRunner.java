@@ -38,7 +38,8 @@ public class ConsoleRunner {
     private final OrderService orderService;
     private ExchangePair exchangePair;
     private ConsoleCommandExecutor commandExecutor;
-    private UserLogDto userLogDto;
+    private List<String> args = new ArrayList<>();
+//    private UserLogDto userLogDto;
 
 
     @Autowired
@@ -68,7 +69,6 @@ public class ConsoleRunner {
 
 
         while (true) {
-            List<String> args = new ArrayList<>();
 
             if (isThereLoggedUser()) {
 
@@ -79,18 +79,18 @@ public class ConsoleRunner {
                         new IncorrectCommands()));
 
                 if (args.get(0).equals("REGISTER")) {
-                    this.registerUser(args);
+                    this.registerUser();
 
                     continue;
                 }
 
                 if (args.get(0).equals("LOGIN")) {
-                    this.login(args);
+                    this.login();
                 }
 
                 // login admin user
                 if (args.get(0).equals("TEST")) {
-                    this.test(args);
+                    this.test();
                 }
             }
 
@@ -108,7 +108,7 @@ public class ConsoleRunner {
             }
 
             if (args.get(0).equals("CONVERT")) {
-                this.convert(args, parser);
+                this.convert(parser);
             }
 
             if (args.get(0).equals("HISTORY")) {
@@ -122,10 +122,6 @@ public class ConsoleRunner {
             }
 
             if (args.get(0).equals("LOGOUT")) {
-                if (userService.getLoginUserEmail().equals("")) {
-                    System.out.println("Cannot log out. No user was logged in.");
-                    continue;
-                }
 
                 System.out.println(userService.logoutUser());
             }
@@ -134,7 +130,7 @@ public class ConsoleRunner {
 
     private void getAllUsersOrders() {
 
-        Integer logUserId = userLogDto.getId();
+        Integer logUserId = userService.getUserLogDto().getId();
 
         Set<OrderDto> allUsersOrders = orderService.getAllUsersOrders(logUserId);
 
@@ -143,14 +139,14 @@ public class ConsoleRunner {
 
     private boolean isThereLoggedUser() {
 
-        if (userService.getLoginUserEmail().equals("")) {
+        if (userService.getUserLogDto() == null) {
             return true;
         }
 
         return false;
     }
 
-    private void convert(List<String> args, ParserCommand parser) {
+    private void convert(ParserCommand parser) {
         args.set(0, "CONVERT");
 
         args.add(reader.readCommandRegisterLoginOrEndAndCheck(
@@ -175,7 +171,7 @@ public class ConsoleRunner {
         exchangePair = parser.getExchangePair(args);
     }
 
-    private void registerUser(List<String> args) {
+    private void registerUser() {
         UserRegisterDto userRegisterDto = new UserRegisterDto();
 
         System.out.println("Enter Name:");
@@ -195,7 +191,7 @@ public class ConsoleRunner {
         args.remove(0);
     }
 
-    private void login(List<String> args) {
+    private void login() {
 
         System.out.println("Enter Email:");
         String email = scanner.nextLine();
@@ -212,14 +208,15 @@ public class ConsoleRunner {
         args.remove(0);
     }
 
-    private void test(List<String> args) {
-        userLogDto = userService.loginUser("asd@abv.bg", "asdA1asd");
-        printLogUser();
+    private void test() {
+
+        userService.loginUser("asd@abv.bg", "asdA1asd");
         args.remove(0);
+        printLogUser();
     }
 
     private void printLogUser() {
-        consoleLogger.logUserLogDto(userLogDto);
+        consoleLogger.logUserLogDto(userService.getUserLogDto());
     }
 
 }

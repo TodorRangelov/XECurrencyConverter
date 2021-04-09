@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a589592c-f35e-40d6-ae98-0fc30ca616ca" name="Default Changelist" comment="Added test method in ConsoleRunner.class,&#10;Added history method in ConsoleRunner.class,&#10;Added methods in OrderRepository.&#10;Refactoring ConsoleRunner.class.">
-      <change afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/entities/dtos/UserLogDto.java" afterDir="false" />
+    <list default="true" id="a589592c-f35e-40d6-ae98-0fc30ca616ca" name="Default Changelist" comment="Finished History method.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleLogger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/helper/UserMessagesHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/helper/UserMessagesHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/entities/dtos/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/domain/entities/dtos/OrderDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/OrderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/UserServiceImpl.java" afterDir="false" />
@@ -69,6 +65,7 @@
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.28735632" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -83,17 +80,6 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="XE.Currency.Converter" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,7 +115,8 @@
       <workItem from="1617288591868" duration="3903000" />
       <workItem from="1617638496201" duration="2864000" />
       <workItem from="1617808054305" duration="5427000" />
-      <workItem from="1617899140604" duration="4569000" />
+      <workItem from="1617899140604" duration="4661000" />
+      <workItem from="1617982980968" duration="5814000" />
     </task>
     <task id="LOCAL-00001" summary="Added fields in User.class">
       <created>1616164050493</created>
@@ -187,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617813514072</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Finished History method.">
+      <created>1617903971426</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1617903971426</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +208,28 @@
     <MESSAGE value="Added OrderService and OrderServiceImpl.&#10;Refactored Order.class and User.class spring annotations.&#10;Already save orders in database.&#10;Refactored ConsoleReader.class, UserMessagesHelper.class, ConsoleRunner.class." />
     <MESSAGE value="Added on Date to order." />
     <MESSAGE value="Added test method in ConsoleRunner.class,&#10;Added history method in ConsoleRunner.class,&#10;Added methods in OrderRepository.&#10;Refactoring ConsoleRunner.class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added test method in ConsoleRunner.class,&#10;Added history method in ConsoleRunner.class,&#10;Added methods in OrderRepository.&#10;Refactoring ConsoleRunner.class." />
+    <MESSAGE value="Finished History method." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished History method." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/service/OrderServiceImpl.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/helper/checkInput/IncorrectCommands.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

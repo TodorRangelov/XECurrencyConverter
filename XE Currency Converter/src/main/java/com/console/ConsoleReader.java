@@ -28,7 +28,7 @@ public class ConsoleReader {
                 case "H":
                     line = "HISTORY";
                     break;
-                default:
+                case "E":
                     line = "END";
                     break;
             }

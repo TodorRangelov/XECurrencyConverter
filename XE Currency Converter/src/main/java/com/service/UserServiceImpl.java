@@ -21,14 +21,14 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private ModelMapper modelMapper;
-    private String loginUserEmail;
+//    private String loginUserEmail;
     private UserLogDto userLogDto;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
         this.modelMapper = new ModelMapper();
-        this.loginUserEmail = "";
+//        this.loginUserEmail = "";
     }
 
     @Override
@@ -95,17 +95,31 @@ public class UserServiceImpl implements UserService {
     }
 
     public String logoutUser() {
-        String s = "User with email " + this.loginUserEmail + " successfully logged out";
-        this.loginUserEmail = "";
+
+        if (userLogDto == null) {
+            return ("Cannot log out. No user was logged in.");
+        }
+
+        String s = "User with email " + this.userLogDto.getEmail() + " successfully logged out";
+        this.userLogDto = null;
+
         return s;
     }
 
     @Override
     public User getLoginUser() {
-        return this.userRepository.getUserByEmail(this.loginUserEmail).orElse(null);
+
+        User user = modelMapper.map(this.userLogDto, User.class);
+
+        return this.userRepository.getUserByEmail(this.userLogDto.getEmail()).orElse(null);
     }
 
-    public String getLoginUserEmail() {
-        return loginUserEmail;
+//    public String getLoginUserEmail() {
+//        return loginUserEmail;
+//    }
+
+
+    public UserLogDto getUserLogDto() {
+        return userLogDto;
     }
 }
