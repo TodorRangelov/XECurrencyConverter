@@ -27,6 +27,7 @@ public class ConsoleLogger implements Logger {
     }
 
     public void logAllUsersOrders(Set<OrderDto> orders) {
+        System.out.println();
         orders.forEach(o -> System.out.printf("Rate %s From Currency %s To Currency %s Date %s%n",
                 o.getCurrencyRate(),
                 o.getFromCurrency(),

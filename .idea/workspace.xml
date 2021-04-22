@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a589592c-f35e-40d6-ae98-0fc30ca616ca" name="Default Changelist" comment="Refactoring ConsoleRunner, OrderServiceImpl, ConsoleReader and UserServiceImpl.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/XE Currency Converter/XE.Currency.Converter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/XE.Currency.Converter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,14 +55,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/FTP/Java/04. Java DB/Hibernate/05. Spring Data Intro/springDataDemo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.28735632" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -80,6 +84,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SpringDataDemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.SpringDataDemoApplication" />
+      <module name="XE.Currency.Converter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SpringDataDemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="XE.Currency.Converter" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.SpringDataDemoApplication" />
@@ -90,11 +107,15 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.SpringDataDemoApplication" />
+        <item itemvalue="Application.SpringDataDemoApplication" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a589592c-f35e-40d6-ae98-0fc30ca616ca" name="Default Changelist" comment="" />
@@ -112,7 +133,20 @@
       <workItem from="1617638496201" duration="2864000" />
       <workItem from="1617808054305" duration="5427000" />
       <workItem from="1617899140604" duration="4661000" />
-      <workItem from="1617982980968" duration="7216000" />
+      <workItem from="1617982980968" duration="17840000" />
+      <workItem from="1618169503718" duration="176000" />
+      <workItem from="1618169700709" duration="28000" />
+      <workItem from="1618169791608" duration="197000" />
+      <workItem from="1618170012067" duration="6000" />
+      <workItem from="1618171864487" duration="61000" />
+      <workItem from="1618171942836" duration="78000" />
+      <workItem from="1618178197768" duration="60000" />
+      <workItem from="1618415299179" duration="3323000" />
+      <workItem from="1618512472861" duration="163000" />
+      <workItem from="1618590464387" duration="1861000" />
+      <workItem from="1618918874578" duration="1131000" />
+      <workItem from="1619013504141" duration="952000" />
+      <workItem from="1619096156373" duration="1116000" />
     </task>
     <task id="LOCAL-00001" summary="Added fields in User.class">
       <created>1616164050493</created>
@@ -184,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617989220185</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Refactoring ConsoleRunner, OrderServiceImpl, ConsoleReader and UserServiceImpl.">
+      <created>1617991155445</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1617991155445</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,19 +265,14 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleRunner.java</url>
-          <line>96</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/helper/checkInput/IncorrectCommands.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleReader.java</url>
           <line>20</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/XE Currency Converter/src/main/java/com/console/ConsoleLogger.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,7 +1,6 @@
 package com.console;
 
 import com.domain.entities.dtos.OrderDto;
-import com.domain.entities.dtos.UserLogDto;
 import com.domain.entities.dtos.UserRegisterDto;
 import com.external.CurrConvAPI;
 import com.service.MoneyServiceImpl;
@@ -111,6 +110,8 @@ public class ConsoleRunner {
 
             if (args.get(0).equals("HISTORY")) {
                 this.getAllUsersOrders();
+
+                continue;
             }
 
             try {
